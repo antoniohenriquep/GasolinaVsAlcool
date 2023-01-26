@@ -3,14 +3,22 @@ import { Text, Pressable, StyleSheet} from 'react-native';
 
 export default function CheckButton(props) {
  return (
-    <Pressable style={styles.area}>
+    <Pressable 
+    style={({pressed}) =>[
+        {
+            backgroundColor: pressed ? '#95bb72': '#658354'
+        },
+        styles.area
+    ]}
+    onPress = {this.props.onPress}
+    >
         <Text style={styles.text}>Calcular</Text>
     </Pressable>
   );
 }
 const styles = StyleSheet.create({
     area:{
-        backgroundColor:'#95bb72',
+        //backgroundColor:'#95bb72',
         height:55,
         width:"90%",
         justifyContent:'center',

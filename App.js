@@ -4,11 +4,24 @@ import CheckButton from "./src/components/CheckButton/index"
 
 export default function App()
 {
-    const [gasolina, setGasolina] = useState()
-    const [alcool, setAlcool] = useState()
-
+    const [gasolina, setGasolina] = useState('')
+    const [alcool, setAlcool] = useState('')
+    const [modalEnabled, setModalEnabled] =  useState(false)
     
+    
+    function calculate()
+    {
+        let compare
+        if(gasolina == '' || alcool == '' )
+        {
+            alert("É necessário que você informe os valores para prosseguir!")
+        }
 
+        compare = parseFloat(gasolina)/parseFloat(alcool)
+        
+        
+        setModalEnabled(true)    
+    }
 
     return(
         <View style = {styles.container}>
@@ -29,7 +42,7 @@ export default function App()
                 style ={styles.input}
                 keyboardType='decimal-pad' 
                 onChangeText={(text) => setAlcool(text)}
-                placeholder = "Digite o valor do álcool"
+                placeholder = "Digite o valor do álcool!"
                 />
             </View>
             
@@ -43,7 +56,7 @@ export default function App()
                 style ={styles.input}
                 keyboardType='decimal-pad'
                 onChangeText={(text) => setGasolina(text)}
-                placeholder = "Digite o valor da gasolina"
+                placeholder = "Digite o valor da gasolina! "
                 />
                 <CheckButton/>
             </View>
