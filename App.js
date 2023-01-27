@@ -7,20 +7,20 @@ export default function App()
     const [gasolina, setGasolina] = useState('')
     const [alcool, setAlcool] = useState('')
     const [modalEnabled, setModalEnabled] =  useState(false)
-    
+    const [result, setResult] = useState()
     
     function calculate()
     {
-        let compare
         if(gasolina == '' || alcool == '' )
         {
             alert("É necessário que você informe os valores para prosseguir!")
         }
-
-        compare = parseFloat(gasolina)/parseFloat(alcool)
-        
-        
-        setModalEnabled(true)    
+        else
+        {
+            let compare = parseFloat(alcool)/parseFloat(gasolina)
+            setModalEnabled(true)
+            setResult(compare)    
+        } 
     }
 
     return(
@@ -58,8 +58,11 @@ export default function App()
                 onChangeText={(text) => setGasolina(text)}
                 placeholder = "Digite o valor da gasolina! "
                 />
-                <CheckButton/>
+                <CheckButton onPress = {() => calculate()}/>
             </View>
+            <Modal visible = {modalEnabled}>
+                <Text>{result}</Text>
+            </Modal>
         </View>
     )
 }

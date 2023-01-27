@@ -6,11 +6,11 @@ export default function CheckButton(props) {
     <Pressable 
     style={({pressed}) =>[
         {
-            backgroundColor: pressed ? '#95bb72': '#658354'
+            backgroundColor: pressed ? '#658354':'#95bb72'
         },
         styles.area
     ]}
-    onPress = {this.props.onPress}
+    onPress = {props.onPress}
     >
         <Text style={styles.text}>Calcular</Text>
     </Pressable>
